@@ -1,2 +1,0 @@
-# Webd-internship
- code
