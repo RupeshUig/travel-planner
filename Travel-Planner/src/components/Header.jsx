@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaBars, FaEllipsisV } from 'react-icons/fa';
+import { FaBars } from 'react-icons/fa';
 
 const countries = [
   { name: 'United States', code: 'US', flag: '🇺🇸' },
@@ -13,12 +13,10 @@ function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState(countries[0]);
 
-  // Function to toggle dropdown open/close
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
-  // Function to select a country and close dropdown
   const selectCountry = (country) => {
     setSelectedCountry(country);
     setDropdownOpen(false);
@@ -27,12 +25,10 @@ function Header() {
   return (
     <div className='p-2 h-[60px] w-[auto] text-black z-10 absolute left-[4%] right-[4%] top-10 flex justify-between items-center'>
       {/* Brand Name */}
-      <div>
-        <div className='font-bold text-3xl'>Hola Trip</div>
-      </div>
+      <div className='font-bold text-3xl'>Hola Trip</div>
 
       {/* Navigation Menu for larger screens */}
-      <ul className='hidden sm:flex p-2 justify-between'>
+      <ul className='hidden lg:flex p-2 justify-between'>
         <li className='mx-3 font-semibold cursor-pointer hover:scale-[1.2]'>Home</li>
         <li className='mx-3 font-semibold cursor-pointer hover:scale-[1.2]'>Destinations</li>
         <li className='mx-3 font-semibold cursor-pointer hover:scale-[1.2]'>Budget Planner</li>
@@ -42,7 +38,7 @@ function Header() {
       </ul>
 
       {/* Country Selector and Login Button for larger screens */}
-      <div className='hidden sm:flex items-center px-2'>
+      <div className='hidden lg:flex items-center px-2'>
         <div className='relative'>
           <button className='flex items-center font-semibold bg-transparent border-none' onClick={toggleDropdown}>
             <span className='mr-2'>{selectedCountry.flag}</span>
@@ -66,12 +62,9 @@ function Header() {
         <button className='bg-black text-white mx-[2px] w-[120px] text-center cursor-pointer'>Log In</button>
       </div>
 
-      {/* Mobile Menu Icons */}
-      <div className='flex sm:hidden'>
+      {/* Hamburger Icon for screens 950px or smaller (right-aligned) */}
+      <div className='flex lg:hidden'>
         <FaBars className='text-2xl cursor-pointer' onClick={() => setMenuOpen(!menuOpen)} />
-      </div>
-      <div className='flex sm:hidden'>
-        <FaEllipsisV className='text-2xl cursor-pointer' />
       </div>
 
       {/* Mobile Menu */}
